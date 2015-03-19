@@ -301,8 +301,8 @@ int32_t mm_camera_open(mm_camera_obj_t *my_obj)
             }
             break;
         }
-        ALOGE("%s:Failed with %s error, retrying after %d milli-seconds",
-             __func__, strerror(errno), sleep_msec);
+        CDBG_HIGH("%s:failed with I/O error retrying after %d milli-seconds",
+             __func__, sleep_msec);
         usleep(sleep_msec * 1000U);
     }while (n_try > 0);
 
