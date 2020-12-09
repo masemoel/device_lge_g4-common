@@ -26,9 +26,9 @@ VENDOR=lge
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-LINEAGE_ROOT="$MY_DIR"/../../..
+AICP_ROOT="$MY_DIR"/../../..
 
-HELPER="$LINEAGE_ROOT"/vendor/lineage/build/tools/extract_utils.sh
+HELPER="$AICP_ROOT"/vendor/aicp/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -36,7 +36,7 @@ fi
 . "$HELPER"
 
 # Initialize the helper
-setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true
+setup_vendor "$DEVICE_COMMON" "$VENDOR" "$AICP_ROOT" true
 
 # Copyright headers and guards
 write_headers "ls991_usu f500_usu h810_usu h811 h812_usu h815 h815_usu h818_usu h819_usu us991_usu vs986_usu"
@@ -48,7 +48,7 @@ write_makefiles "$MY_DIR"/proprietary-files.txt
 write_footers
 
 # Initialize the helper for device
-setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT"
+setup_vendor "$DEVICE" "$VENDOR" "$AICP_ROOT"
 
 # Copyright headers and guards
 write_headers
