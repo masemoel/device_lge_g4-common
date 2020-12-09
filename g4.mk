@@ -84,8 +84,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-external-service \
     android.hardware.camera.provider@2.4-legacy \
     libqomx_core \
-    libmm-qcamera \
-    Camera2
+    libmm-qcamera
 
 # rootless torch tile workaround
 PRODUCT_PACKAGES += \
@@ -130,12 +129,6 @@ PRODUCT_PACKAGES += \
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl
-
-# F-droid
-#WITH_FDROID := true
-#PRODUCT_PACKAGES += \
-#    F-Droid \
-#    FDroidPrivilegedExtension
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(LOCAL_PATH)/config.fs
@@ -220,14 +213,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl
 
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-	LiveWallpapers \
-	LiveWallpapersPicker \
-	MagicSmokeWallpapers \
-	VisualizationWallpapers \
-	librs_jni
-
 # MP-CTL
 PRODUCT_PACKAGES += \
     libqti-perfd \
@@ -274,10 +259,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/nfc/libnfc-nci.conf:system/vendor/etc/libnfc-nci.conf \
     $(LOCAL_PATH)/nfc/libnfc-nxp.conf:system/vendor/etc/libnfc-nxp.conf \
     $(LOCAL_PATH)/nfc/nfcee_access.xml:system/etc/nfcee_access.xml
-
-# Trust
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \

@@ -1,4 +1,6 @@
-Copyright 2015 - The CyanogenMod Project
+![AICP](https://raw.githubusercontent.com/AICP/vendor_aicp/q10.0/docs/xda_template/logo_black.png "AICP")
+
+AICP 15.0 (Q) for LG G4.
 
 Device configuration for LG G4.
 =====================================
