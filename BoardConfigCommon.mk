@@ -90,7 +90,12 @@ TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /vendor/bin/mm-qcamera-daemon=24 \
     /system/bin/cameraserver=24 \
-    /system/bin/mediaserver=24
+    /system/bin/mediaserver=243
+TARGET_USES_PREBUILT_CAMERA_SERVICE := true
+
+PRODUCT_SOONG_NAMESPACES += \
+    frameworks/av/camera/cameraserver \
+    frameworks/av/services/camera/libcameraservice
 
 # Display
 TARGET_USES_ION := true
