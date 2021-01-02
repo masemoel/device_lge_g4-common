@@ -62,7 +62,7 @@ LOCAL_C_INCLUDES := \
 #HAL 1.0 Include paths
 LOCAL_C_INCLUDES += \
         frameworks/native/include/media/hardware \
-        device/lge/bullhead/camera/QCamera2/HAL
+        device/lge/g4-common/camera/QCamera2/HAL
 
 LOCAL_HEADER_LIBRARIES := generated_kernel_headers
 

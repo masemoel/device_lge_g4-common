@@ -85,6 +85,7 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/g4-common/bluetooth
 
 # Camera
 BOARD_QTI_CAMERA_32BIT_ONLY := true
+TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /vendor/bin/mm-qcamera-daemon=24
 
 # Display
