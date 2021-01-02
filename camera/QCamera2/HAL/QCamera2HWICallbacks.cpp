@@ -36,6 +36,7 @@
 #include <utils/Errors.h>
 #include <utils/Trace.h>
 #include <utils/Timers.h>
+#include <QComOMXMetadata.h>
 #include "QCamera2HWI.h"
 
 namespace qcamera {
@@ -1122,9 +1123,26 @@ void QCamera2HardwareInterface::video_stream_cb_routine(mm_camera_super_buf_t *s
             }
         }
     } else {
+        QCameraMemory *videoMemObj = (QCameraMemory *)frame->mem_info;
         camera_memory_t *video_mem = NULL;
         native_handle_t *nh = NULL;
         int fd_cnt = frame->user_buf.bufs_used;
+        if (NULL != videoMemObj) {
+            video_mem = videoMemObj->getMemory(frame->buf_idx, true);
+            if (video_mem != NULL) {
+                struct encoder_media_buffer_type * packet =
+                        (struct encoder_media_buffer_type *)video_mem->data;
+                // fd cnt => Number of buffer FD's and buffer for offset, size, timestamp
+                packet->meta_handle = native_handle_create(fd_cnt, (3 * fd_cnt));
+                packet->buffer_type = kMetadataBufferTypeCameraSource;
+                nh = const_cast<native_handle_t *>(packet->meta_handle);
+            } else {
+                ALOGE("%s video_mem NULL", __func__);
+            }
+        } else {
+            ALOGE("%s videoMemObj NULL", __func__);
+        }
+
         if (nh != NULL) {
             nsecs_t timeStamp;
             timeStamp = nsecs_t(frame->ts.tv_sec) * 1000000000LL
