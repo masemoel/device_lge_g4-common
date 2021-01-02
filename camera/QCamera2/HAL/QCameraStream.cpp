@@ -30,7 +30,6 @@
 #define LOG_TAG "QCameraStream"
 
 #include <utils/Errors.h>
-#include <QComOMXMetadata.h>
 #include "QCamera2HWI.h"
 #include "QCameraStream.h"
 
@@ -1035,19 +1034,6 @@ int32_t QCameraStream::bufDone(const void *opaque, bool isMetaData)
         if (index == -1 || index >= mNumBufs || mBufDefs == NULL) {
             ALOGE("%s: Cannot find buf for opaque data = %p", __func__, opaque);
             return BAD_INDEX;
-        }
-        camera_memory_t *video_mem = mStreamBatchBufs->getMemory(index, true);
-        if (video_mem != NULL) {
-            struct encoder_media_buffer_type * packet =
-                    (struct encoder_media_buffer_type *)video_mem->data;
-            native_handle_t *nh = const_cast<native_handle_t *>(packet->meta_handle);
-            if (NULL != nh) {
-               if (native_handle_delete(nh)) {
-                   ALOGE("%s: Unable to delete native handle", __func__);
-               }
-            } else {
-               ALOGE("%s : native handle not available", __func__);
-            }
         }
     } else {
         index = mStreamBufs->getMatchBufIndex(opaque, isMetaData);
