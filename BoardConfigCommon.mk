@@ -84,18 +84,8 @@ BOARD_CUSTOM_BT_CONFIG := device/lge/g4-common/bluetooth/libbt_vndcfg.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/g4-common/bluetooth
 
 # Camera
-USE_DEVICE_SPECIFIC_CAMERA := true
-TARGET_USES_MEDIA_EXTENSIONS := true
-TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
-TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
-    /vendor/bin/mm-qcamera-daemon=24 \
-    /system/bin/cameraserver=24 \
-    /system/bin/mediaserver=243
-TARGET_USES_PREBUILT_CAMERA_SERVICE := true
-
-PRODUCT_SOONG_NAMESPACES += \
-    frameworks/av/camera/cameraserver \
-    frameworks/av/services/camera/libcameraservice
+BOARD_QTI_CAMERA_32BIT_ONLY := true
+    /vendor/bin/mm-qcamera-daemon=24
 
 # Display
 TARGET_USES_ION := true
