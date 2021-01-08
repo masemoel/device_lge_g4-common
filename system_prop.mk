@@ -35,6 +35,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.media_vol_steps=25 \
     ro.config.vc_call_vol_steps=7
 
+# Battery
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.mot.eri.losalert.delay=1000 \
+    ro.ril.power_collapse=1 \
+    pm.sleep_mode=1 \
+    wifi.supplicant_scan_interval=180 \
+    ro.mot.eri.losalert.delay=1000
+
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.chip.vendor=brcm \
@@ -49,6 +57,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.gestures.camera=false \
     camera2.portability.force_api=1 \
     ro.factorytest=0
+
+# Speed-up recording
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.media.enc.jpeg.quality=100 \
+    ro.media.dec.jpeg.memcap=8000000\
+    ro.media.enc.hprof.vid.bps=8000000 \
+    ro.media.capture.maxres=8m \
+    ro.media.panorama.defres=3264×1840 \
+    ro.media.panorama.frameres=1280×720 \
+    ro.camcorder.videoModes=true \
+    ro.media.enc.hprof.vid.fps=65 \
+    ro.media.dec.aud.wma.enabled=1 \
+    ro.media.dec.vid.wmv.enabled=1 \
+    ro.media.cam.preview.fps=0 \
+    ro.media.codec_priority_for_thumb=so
 
 # Enable camera EIS
 # eis.enable: enables electronic image stabilization
@@ -95,8 +118,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.cabl=2
 
 # Properties to improve rendering
+PRODUCT_PROPERTY_OVERRIDES += \
     debug.enable.sglscale=1 \
     debug.egl.hw=1 \
+    debug.egl.profiler=1 \
     debug.sf.hw=1 \
     debug.sf.disable_hwc=0 \
     debug.sf.recomputecrop=0 \
@@ -105,7 +130,27 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.ptor.enable=true \
     debug.sf.gpu_comp_tiling=1 \
     debug.cpurend.vsync=false \
-    debug.performance.tuning=1
+    debug.performance.tuning=1 \
+    video.accelerate.hw=1 \
+    ro.config.hw_quickpoweron=true \
+    persist.sys.NV_FPSLIMIT=60 \
+    persist.sys.NV_POWERMODE=1 \
+    persist.sys.NV_PROFVER=15 \
+    persist.sys.NV_STEREOCTRL=0 \
+    persist.sys.NV_STEREOSEPCHG=0 \
+    persist.sys.NV_STEREOSEP=20 \
+    persist.sys.purgeable_assets=1 \
+    debug.enabletr=true \
+    debug.qctwa.preservebuf=1 \
+    dev.pm.dyn_samplingrate=1 \
+    ro.vold.umsdirtyratio=20 \
+    debug.overlayui.enable=1 \
+    ro.fb.mode=1 \
+    hw3d.force=1 \
+    persist.sys.ui.hw=1 \
+    ro.sf.compbypass.enable=0 \
+    persist.sys.composition.type=c2d \
+    ro.HOME_APP_ADJ=1
 
 # MSM8992 HAL settings
 # 196610 is decimal for 0x30002 to report major/minor versions as 3/2
@@ -190,7 +235,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.cpp.duplication=false \
     debug.stagefright.omx_default_rank.sw-audio=1 \
     debug.stagefright.omx_default_rank=0 \
-    persist.media.treble_omx=false
+    persist.media.treble_omx=false \
+    media.stagefright.enable-player=true \
+    media.stagefright.enable-meta=true \
+    media.stagefright.enable-scan=true \
+    media.stagefright.enable-http=true \
+    media.stagefright.enable-rtsp=true \
+    media.stagefright.enable-record=false
 
 # Memory Optimizations
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -226,8 +277,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_network=12 \
     ro.ril.svlte1x=false \
     ro.ril.svdo=false \
+    ro.ril.enable.amr.wideband=1 \
     persist.radio.add_power_save=1 \
-    persist.telephony.oosisdc=false
+    persist.telephony.oosisdc=false \
+    ro.telephony.call_ring.delay=0 \
+    ring.delay=0
 
 # Security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
