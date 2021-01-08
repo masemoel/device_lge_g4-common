@@ -50,6 +50,25 @@ PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1 \
     ro.factorytest=0
 
+# Enable camera EIS
+# eis.enable: enables electronic image stabilization
+# is_type: sets image stabilization type
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.camera.eis.enable=1 \
+    persist.camera.is_type=4
+
+# Disable Camera TNR
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.camera.tnr.preview=0 \
+    persist.camera.tnr.video=0
+    
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.camera.HAL3.enabled=1
+
+# NFC/camera interaction workaround - DO NOT COPY TO NEW DEVICES
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.camera.notify_nfc=1
+
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
@@ -120,6 +139,37 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.frp.pst=/dev/block/bootdevice/by-name/persistent
 
+# Graphics
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    debug.sf.disable_backpressure=1 \
+    debug.sf.enable_gl_backpressure=1 \
+    debug.sf.latch_unsignaled=1 \
+    ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
+    ro.surface_flinger.max_frame_buffer_acquired_buffers=3 \
+    ro.surface_flinger.max_virtual_display_dimension=2048 \
+    ro.surface_flinger.vsync_event_phase_offset_ns=2000000 \
+    ro.surface_flinger.vsync_sf_event_phase_offset_ns=6000000
+
+# ro.product.first_api_level indicates the first api level the device has commercially launched on.
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product.first_api_level=23
+
+# HWUI
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hwui.texture_cache_size=56 \
+    ro.hwui.layer_cache_size=32 \
+    ro.hwui.r_buffer_cache_size=8 \
+    ro.hwui.path_cache_size=16 \
+    ro.hwui.gradient_cache_size=1 \
+    ro.hwui.drop_shadow_cache_size=6 \
+    ro.hwui.texture_cache_flushrate=0.4 \
+    ro.hwui.text_small_cache_width=1024 \
+    ro.hwui.text_small_cache_height=1024 \
+    ro.hwui.text_large_cache_width=2048 \
+    ro.hwui.text_large_cache_height=1024 \
+    persist.hwc.mdpcomp.enable=true \
+    debug.hwui.renderer=opengl
+
 # GPS
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.gps.qc_nlp_in_use=1 \
@@ -137,7 +187,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vidc.debug.level=1 \
     vidc.debug.perf.mode=2 \
     vidc.enc.dcvs.extra-buff-count=2 \
-    persist.camera.cpp.duplication=false
+    persist.camera.cpp.duplication=false \
+    debug.stagefright.omx_default_rank.sw-audio=1 \
+    debug.stagefright.omx_default_rank=0 \
+    persist.media.treble_omx=false
 
 # Memory Optimizations
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -191,10 +244,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Storage
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sys.sdcardfs=true
-
-# Fix graphical glitches on skiagl
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.hwui.renderer=opengl
 
 # Zygote preforking
 PRODUCT_PROPERTY_OVERRIDES += \

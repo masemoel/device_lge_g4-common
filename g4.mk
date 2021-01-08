@@ -89,25 +89,6 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.device@1.0 \
     vendor.qti.hardware.camera.device@1.0_vendor
 
-# Enable camera EIS
-# eis.enable: enables electronic image stabilization
-# is_type: sets image stabilization type
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.camera.eis.enable=1 \
-    persist.camera.is_type=4
-
-# Disable Camera TNR
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.camera.tnr.preview=0 \
-    persist.camera.tnr.video=0
-    
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.camera.HAL3.enabled=1
-
-# NFC/camera interaction workaround - DO NOT COPY TO NEW DEVICES
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.camera.notify_nfc=1
-
 # rootless torch tile workaround
 PRODUCT_PACKAGES += \
     Flashlight
@@ -136,6 +117,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.mapper@2.0-impl-2.1 \
     android.hardware.memtrack@1.0-impl \
     copybit.msm8992 \
