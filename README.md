@@ -1,6 +1,10 @@
 ![AICP](https://raw.githubusercontent.com/AICP/vendor_aicp/q10.0/docs/xda_template/logo_black.png "AICP")
 
-AICP 15.0 (Q) for LG G4.
+# AICP 15.0 (Q) for LG G4.
+
+Have a look at my local_manifest for the repos you need to build a functional build for the LG G4:
+https://github.com/masemoel/local_manifests/blob/master/g4_q.xml
+My trees are based on aoleary ones. Thanks for his great help and effort in the G4 throughtout this years.
 
 Device configuration for LG G4.
 =====================================
