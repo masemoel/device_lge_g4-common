@@ -215,6 +215,9 @@ TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib64/lib-rtpcore.so|/system/vendor/lib64/ims_rtp_shim.so \
     /system/vendor/bin/slim_daemon|/system/vendor/lib64/slim_shim.so
 
+# Surfaceflinger
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 6
+
 # Thermal
 USE_DEVICE_SPECIFIC_THERMAL := true
 
